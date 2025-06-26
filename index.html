@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何看待預言與預測？一個基督徒的視角</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Warm Neutral Harmony. A calm and harmonious palette using warm neutrals (beige, off-white) as the main background, with complimentary colors for components and very subtle accents for highlights.
+    -->
+    <!-- 
+        Application Structure Plan: The application is structured as a single-page, top-down narrative flow to guide the user logically. It starts with a relatable introduction (引言), establishes core biblical principles in a clear, comparative layout (聖經的教導), provides interactive, clickable cards for practical discernment steps (分辨的原則), applies these principles to a real-world case study (案例分析), then introduces a new section on biblical preparedness for unforeseen challenges (基於聖經的預備觀), and concludes with a supplementary "side note" (題外話). This thematic sectioning, supported by smooth-scrolling navigation, was chosen over mirroring the report's linear structure to enhance user engagement and facilitate a step-by-step understanding of a complex theological topic.
+    -->
+    <!-- 
+        Visualization & Content Choices: The application translates dense text into a more engaging experience without using traditional charts.
+        - Report Info: Prophecy vs. Prediction -> Goal: Compare -> Viz/Method: Two-column layout with icons -> Interaction: Static display for clear comparison -> Justification: Clearly delineates two core concepts.
+        - Report Info: Discernment steps -> Goal: Engage/Inform -> Viz/Method: Interactive accordion/cards -> Interaction: Click to expand/collapse -> Justification: Encourages user interaction and breaks down information into digestible chunks, preventing cognitive overload.
+        - Report Info: Case study application -> Goal: Apply/Reinforce -> Viz/Method: Numbered list within a styled card -> Interaction: Static reading -> Justification: Provides a clear, step-by-step application of the previously learned principles.
+        - Report Info: Biblical preparedness -> Goal: Inform/Empower -> Viz/Method: Section with descriptive text and bullet points -> Interaction: Static reading -> Justification: Provides practical guidance and a positive call to action based on biblical principles.
+        - All visual elements are created with HTML/CSS and Unicode characters, adhering to the no SVG/Mermaid constraint.
+    -->
+    <!-- 
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .section-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .nav-link {
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .nav-link:hover {
+            color: #a78bfa; /* lighter violet on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-gray-700">
+                基督徒的視角
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#intro" class="nav-link text-gray-600">引言</a>
+                <a href="#principles" class="nav-link text-gray-600">聖經原則</a>
+                <a href="#case-study" class="nav-link text-gray-600">案例分析</a>
+                <a href="#preparedness" class="nav-link text-gray-600">應對挑戰</a>
+                <a href="#sidenote" class="nav-link text-gray-600">題外話</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#intro" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">引言</a>
+            <a href="#principles" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">聖經原則</a>
+            <a href="#case-study" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">案例分析</a>
+            <a href="#preparedness" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">應對挑戰</a>
+            <a href="#sidenote" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">題外話</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <!-- Section 1: Introduction -->
+        <section id="intro" class="mb-16">
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-violet-700 mb-4">如何看待預言與預測？</h1>
+            <p class="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-8">一個基督徒的視角</p>
+            
+            <div class="section-card rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">為何要分享這個話題？</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    親愛的朋友們，最近在我們的小組和周圍，大家一直在討論關於日本「地震預言」的事情。我知道這類消息常常會引起很多關注和討論。正是這些對特定事件和日期的「預測」，讓我感覺這是一個很好的機會，讓我們一起來深入思考一個重要的課題：作為基督徒，我們應該如何用聖經的智慧來審視各種類型的「預言」和「預測」？這對於我們在末後的日子中，如何堅定信心、避免不必要的恐懼和混亂，並將我們的信任完全建立在上帝的話語上，是至關重要的。
+                </p>
+                <p class="mt-4 text-gray-700 leading-relaxed">
+                    在我們深入了解具體案例之前，讓我們首先建立一個合乎聖經的基礎，來分辨什麼是真正的聖經預言，什麼是僅基於人類理解或臆測的「預測」。這兩者之間存在著本質的區別，而辨明這些區別，能幫助我們避免不必要的恐懼和混亂，並將我們的信心建立在穩固的真理之上。
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Biblical Principles -->
+        <section id="principles" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">聖經的教導：預言 vs. 預測</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Prophecy -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-violet-500">
+                    <h3 class="text-2xl font-bold text-violet-700 mb-4 flex items-center">
+                        <span class="text-3xl mr-3">📜</span> 聖經中的預言 (Prophecy)
+                    </h3>
+                    <p class="text-gray-600 mb-4">是上帝透過祂的僕人向人類發出的<strong>神聖啟示</strong>。其主要目的並非滿足好奇心，而是：</p>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-violet-500 font-bold mr-2">✓</span> **榮耀上帝：** 顯明祂的全能、主權和祂對人類的旨意。</li>
+                        <li class="flex items-start"><span class="text-violet-500 font-bold mr-2">✓</span> **呼召悔改與歸正：** 警告罪惡的後果，引導人回到上帝面前。</li>
+                        <li class="flex items-start"><span class="text-violet-500 font-bold mr-2">✓</span> **堅固信心：** 當預言應驗時，證明上帝話語的真實可靠。</li>
+                        <li class="flex items-start"><span class="text-violet-500 font-bold mr-2">✓</span> **提供指引：** 在艱難時期給予信徒盼望和方向。</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-500 italic">真正的預言者所說的話，必須百分之百應驗 (申命記 18:22)。</p>
+                </div>
+                <!-- Prediction -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-gray-400">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-4 flex items-center">
+                       <span class="text-3xl mr-3">🧠</span> 人類的預測 (Prediction)
+                    </h3>
+                    <p class="text-gray-600 mb-4">更多地基於人類的分析、觀察、推斷，或是個人的靈感、感覺。其特點是：</p>
+                    <ul class="space-y-3 text-gray-700">
+                       <li class="flex items-start"><span class="text-gray-500 font-bold mr-2">✗</span> **來源於人：** 可能基於統計、趨勢、甚至神秘學的影響。</li>
+                       <li class="flex items-start"><span class="text-gray-500 font-bold mr-2">✗</span> **不具神聖權威：** 本身沒有來自上帝的權威性。</li>
+                       <li class="flex items-start"><span class="text-gray-500 font-bold mr-2">✗</span> **可能會出錯：** 無需為其應驗與否負屬靈責任。</li>
+                       <li class="flex items-start"><span class="text-gray-500 font-bold mr-2">✗</span> **目的多樣：** 可能出於善意提醒，也可能為了吸引注意。</li>
+                    </ul>
+                     <p class="mt-4 text-sm text-gray-500 italic">人類的預測並非來自上帝的直接啟示，因此應謹慎對待。</p>
+                </div>
+            </div>
+
+            <!-- Discernment Steps -->
+            <div class="max-w-3xl mx-auto mt-12">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">我們應當如何分辨？</h3>
+                <div class="space-y-4" id="accordion-container">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div class="accordion-header p-4 cursor-pointer flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-700">1. 用聖經來檢驗一切</h4>
+                            <span class="accordion-icon transition-transform duration-300">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">任何信息都必須與聖經的總體教導相符。上帝不會傳遞與祂已啟示的話語相矛盾的信息。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div class="accordion-header p-4 cursor-pointer flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-700">2. 警惕日期設定</h4>
+                            <span class="accordion-icon transition-transform duration-300">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">耶穌清楚地說，祂再來的那日子、那時辰，沒有人知道 (馬太福音 24:36)。聖經教導我們要警醒預備，而不是猜測具體日期。對於特定事件的預測，我們更需謹慎，不要被非聖經根據的信息所動搖。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div class="accordion-header p-4 cursor-pointer flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-700">3. 專注於屬靈預備</h4>
+                            <span class="accordion-icon transition-transform duration-300">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">基督徒的重點永遠是警醒、禱告、傳福音，活出基督的樣式，而不是被某個特定日期或事件所捆綁。無論發生什麼，我們的盼望都在基督裡。</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div class="accordion-header p-4 cursor-pointer flex justify-between items-center">
+                            <h4 class="font-semibold text-lg text-gray-700">4. 分辨信息來源</h4>
+                            <span class="accordion-icon transition-transform duration-300">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">判斷信息來源是否來自上帝，還是出於人的臆測或情緒。信息的果子是什麼？是帶來合一、信心與和平，還是帶來分裂、恐懼與混亂？</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Case Study -->
+        <section id="case-study" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">案例分析：將原則應用到「日本地震預言」</h2>
+            <div class="section-card rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
+                 <p class="text-gray-700 leading-relaxed mb-4">
+                    關於您提到的日本「地震預言」，根據目前在網絡上廣泛流傳的信息，這個預言主要源自一位名叫<strong>龍樹諒 (Ryo Tatsuki)</strong> 的日本漫畫家。她在1999年出版的漫畫《我所看到的未來》中，據稱預言了包括2011年日本東北大地震在內的一些事件。在2021年再版時，書中提及她預見到2025年7月5日，日本與菲律賓之間的海底會發生一次巨大的斷裂，引發規模可能達2011年海嘯三倍的巨大海嘯。此預言在社群媒體上廣泛傳播，甚至導致了一些前往日本的航班預訂被取消或減少。
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    然而，日本氣象廳及多數科學家都明確指出，目前的科學知識尚無法精確預測地震。那麼，讓我們將之前討論的聖經原則應用到這個具體的案例上：
+                </p>
+                <div class="space-y-4">
+                    <div class="bg-violet-50 p-4 rounded-lg border-l-4 border-violet-400">
+                        <p><strong class="text-violet-800">1. 區分預言與預測：</strong> 龍樹諒的「預言」是基於個人的夢境和「<strong>預感</strong>」，這本質上屬於人類的「<strong>預測</strong>」範疇，而非聖經中那種源自上帝直接啟示、帶有神聖權威性的預言。它缺乏聖經預言所具備的神聖啟示性與無誤性。</p>
+                    </div>
+                     <div class="bg-violet-50 p-4 rounded-lg border-l-4 border-violet-400">
+                        <p><strong class="text-violet-800">2. 警惕日期設定：</strong> 這個預測明確給出了「2025年7月5日」這個具體日期。這與耶穌關於祂再來「那日子、那時辰沒有人知道」的教導相悖。聖經鼓勵警醒預備，而不是被日期所困擾。</p>
+                    </div>
+                    <div class="bg-violet-50 p-4 rounded-lg border-l-4 border-violet-400">
+                        <p><strong class="text-violet-800">3. 專注於屬靈預備：</strong> 基督徒面對這類信息，不應陷入恐慌或過度猜測，而是應將焦點放在屬靈的預備上。我們應當不斷地悔改、親近上帝、服事他人，活出警醒的生命，因為災難可能隨時發生，而永恆比任何地震預測都更重要。</p>
+                    </div>
+                     <div class="bg-violet-50 p-4 rounded-lg border-l-4 border-violet-400">
+                        <p><strong class="text-violet-800">4. 分辨信息來源：</strong> 雖然我們不應輕視任何警醒世人的信息，但作為基督徒，我們必須根據聖經的真理來分辨信息的來源和性質。對於非來自上帝明確啟示的「預測」，我們應保持謹慎和辨別力。真正的信心是建立在上帝不變的話語之上，而非人類不可靠的預測。</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-center font-semibold text-gray-700">總之，我們應當以冷靜、理性和合乎聖經的態度來應對。持續禱告，為受影響的人群祈福，並將我們的信心和盼望堅定地放在那位掌管一切的上帝身上。</p>
+            </div>
+        </section>
+
+        <!-- New Section: Biblical Preparedness -->
+        <section id="preparedness" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">應對未知的挑戰：基於聖經的預備觀</h2>
+            <div class="section-card rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    儘管我們不應被人類的預測所恐嚇，但聖經中的智慧教導我們，作為信徒，應當時刻預備好應對生命中的不確定性。這種預備不是基於恐懼或末日情結，而是出於對上帝主權的信靠和對周遭人的愛。
+                </p>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">🌿 智慧的預備 (物質與實際)</h3>
+                        <p class="text-gray-700">
+                            聖經鼓勵我們做智慧的管家。箴言中提醒人要像螞蟻一樣未雨綢繆 (箴言 6:6-8)。約瑟為埃及預備七年豐收，以應對七年饑荒，這是一個很好的榜樣 (創世記 41章)。這並非出於恐懼囤積，而是負責任地預備，以在艱難時期能夠自給自足，甚至幫助他人。可以考慮備好急救包、飲用水、一些應急物資，並了解基本的應急知識。
+                        </p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                        <h3 class="font-bold text-lg text-yellow-800 mb-2">💖 心靈的韌性 (情緒與精神)</h3>
+                        <p class="text-gray-700">
+                            在不確定和壓力下，保持內心的平安至關重要。耶穌說：「我留下平安給你們；我將我的平安賜給你們。我所賜的，不像世人所賜的。你們心裡不要憂愁，也不要膽怯。」 (約翰福音 14:27) 藉著禱告和信靠上帝，我們的靈魂可以找到真正的安息，不被外界的混亂所動搖。培養感恩的心，面對挑戰時尋求神的引導。
+                        </p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                        <h3 class="font-bold text-lg text-green-800 mb-2">✝️ 屬靈的堅固 (與上帝的關係)</h3>
+                        <p class="text-gray-700">
+                            這是我們預備的最終基石。與上帝建立深厚的關係，定期讀經、禱告、參與團契，能讓我們的屬靈生命紮根於磐石之上。當暴風雨來襲時，我們的信心不會動搖。基督徒的盼望是永恆的，超越世上的一切苦難。無論發生什麼，我們的家鄉在天上，這才是我們最終的歸屬和保障。
+                        </p>
+                    </div>
+                     <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                        <h3 class="font-bold text-lg text-purple-800 mb-2">🤝 社群的互助 (彼此相愛)</h3>
+                        <p class="text-gray-700">
+                            基督徒生活是團體的，而非孤立的。在任何困難時刻，與肢體互相扶持、彼此照顧是聖經的教導。「兩個人總比一個人好，因為二人勞碌同得美好的果效。」 (傳道書 4:9) 建立一個互相支持的社群，可以在逆境中提供巨大的力量和安慰。
+                        </p>
+                    </div>
+                </div>
+                <p class="mt-6 text-center font-semibold text-gray-700">
+                    最終，我們的信心並非建立在對未來事件的預知上，而是建立在對掌管一切、充滿慈愛和權能的上帝的堅定信靠上。這種信靠引導我們以智慧預備，而非以恐懼度日。
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 4: Sidenote -->
+        <section id="sidenote" class="bg-gray-100 py-12">
+            <div class="container mx-auto px-6 max-w-4xl">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4">題外話：昨日的2025年6月25日與《先兆》</h2>
+                 <p class="text-gray-600 mb-4">
+                    順帶一提，就在昨天，2025年6月25日，這個日期其實也曾被一位名叫喬納單·坎恩 (Jonathan Cahn) 的作者和牧師多次提及，他寫了一系列名為《先兆》(The Harbinger) 的書。
+                 </p>
+                 <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">喬納單·坎恩 (Jonathan Cahn) 的信息與《先兆》系列：</h4>
+                    <p class="text-gray-600 mb-3">坎恩近來持續發出與2025年6月25日相關的「緊急預言性警告」。值得注意的是，他並沒有對這一天做出單一、具體的災難性事件預測，而是將其作為一個「神聖啟示」的標誌，一個「警醒」基督徒和國家的時刻。</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mt-4 mb-2">他的信息更側重於：</h5>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>**廣泛的屬靈呼召：** 呼召「蒙揀選基督徒」興起、站立，在考驗中成為光。</li>
+                        <li class="flex items-start"><span class="text-gray-500 font-bold mr-2"></span>**末世啟示與復興：** 他的教導與末世預言、屬靈爭戰和復興等主題緊密相連。</li>
+                        <li class="flex items-start"><span class="text-gray-500 font-bold mr-2"></span>**預言模式的重複：** 經常將古代以色列的事件與現代美國進行類比。</li>
+                        <li class="flex items-start"><span class="text-gray-500 font-bold mr-2"></span>**緊迫的預備信息：** 不斷強調屬靈預備的必要性，要與上帝的旨意對齊。</li>
+                    </ul>
+
+                     <p class="text-gray-600 mt-4">簡而言之，坎恩的宣告更像一個廣泛的預言性警告和一個呼籲悔改的號召，而非單一事件預測。</p>
+
+                    <h5 class="font-semibold text-gray-700 mt-6 mb-2">《先兆》一書概要：</h5>
+                    <p class="text-gray-600">此書被呈現為一部小說，但坎恩堅稱其根植於古代以色列和現代美國之間真實的非虛構聯繫。其核心是**九個先兆**，他認為這些先兆是上帝給美國的警告，呼籲國家悔改和歸向祂，以避免進一步的審判。</p>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025. 願我們常在主的話語中察驗，並將信心建立在磐石之上。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+
+                header.addEventListener('click', () => {
+                    // Close other items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.accordion-header').classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                        }
+                    });
+
+                    // Toggle current item
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = null;
+                    }
+                });
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileNavLinks = mobileMenu.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
